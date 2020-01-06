@@ -1,7 +1,7 @@
 {
   "name": "tree",
   "version": "0.0.0",
-  "description": "A unix tree command implementation written in pure Native Reason",
+  "description": "A minimal Unix tree command implementation written in pure Native Reason",
   "repository": "https://github.com/imbsky/re-tree",
   "author": "BSKY <me@bsky.moe>",
   "license": "Apache-2.0",
