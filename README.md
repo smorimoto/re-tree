@@ -1,5 +1,10 @@
 # re-tree
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![GitHub](https://img.shields.io/github/license/imbsky/dvm?color=brightgreen&style=flat-square)](https://github.com/imbsky/dvm/blob/master/LICENSE)
+
+## Overview
+
 A minimal Unix tree command implementation written in pure Native Reason.
 
 ## Bug reports and user feedback
