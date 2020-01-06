@@ -4,5 +4,23 @@
   "description": "A unix tree command implementation written in pure Native Reason",
   "repository": "https://github.com/imbsky/re-tree",
   "author": "BSKY <me@bsky.moe>",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "esy": {
+    "build": "refmterr dune build --for-release-of-packages=#{self.name}",
+    "buildsInSource": "_build"
+  },
+  "scripts": {
+    "clean": "dune clean --for-release-of-packages=#{self.name}",
+    "fmt": "esy dune build @fmt --auto-promote",
+    "prettier": "bash -c 'prettier --write **/*.{json,md,yml}'"
+  },
+  "dependencies": {
+    "@opam/dune": "2.0.1",
+    "ocaml": "4.08.1000",
+    "refmterr": "3.3.0"
+  },
+  "devDependencies": {
+    "@opam/merlin": "3.3.3",
+    "prettier": "1.19.1"
+  }
 }
