@@ -1,0 +1,48 @@
+name: Main workflow
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    if: github.repository == 'imbsky/re-tree'
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+        node-version: [13.x]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.0.0
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1.3.0
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Restore esy cache
+        uses: actions/cache@v1.1.0
+        id: esy
+        with:
+          path: ~/.esy
+          # prettier-ignore
+          key: ${{ runner.os }}-esy-${{ hashFiles(format('{0}{1}', github.workspace, '/esy.lock/index.json')) }}
+
+      - name: Install esy
+        run: npm install --global esy
+
+      - name: Install and build opam packages
+        run: esy
+
+      - name: Copy and rename binary
+        run: cp _build/default/src/tree.exe ./tree
+
+      - name: Upload binary to artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: re-tree-${{ matrix.os }}
+          path: tree
