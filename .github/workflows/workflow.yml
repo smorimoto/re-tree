@@ -32,20 +32,6 @@ jobs:
           # prettier-ignore
           key: ${{ runner.os }}-esy-${{ hashFiles(format('{0}{1}', github.workspace, '/esy.lock/index.json')) }}
 
-      - name: Get npm cache directory
-        id: npm
-        run: echo "::set-output name=dir::$(npm config get cache)"
-
-      - name: Get esy version
-        id: esy-version
-        run: echo "::set-output name=version::$(npm info esy version)"
-
-      - name: Restore npm cache
-        uses: actions/cache@v1.1.0
-        with:
-          path: ${{ steps.npm.outputs.dir }}
-          key: ${{ runner.os }}-npm-${{ steps.esy-version.outputs.version }}
-
       - name: Install esy
         run: npm install --global esy
 
