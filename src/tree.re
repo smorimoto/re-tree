@@ -25,14 +25,21 @@ let rec tree = (directory, prefix, count) => {
       if (!Char.equal(path.[0], '.')) {
         let absolute = Filename.concat(directory, path);
         let isDirectory = Sys.is_directory(absolute);
-        isDirectory
-          ? count.dirs := count.dirs^ + 1 : count.files := count.files^ + 1;
+        if (isDirectory) {
+          count.dirs := count.dirs^ + 1;
+        } else {
+          count.files := count.files^ + 1;
+        };
         if (index == Array.length(paths) - 1) {
           print_endline(prefix ++ "└── " ++ path);
-          isDirectory ? tree(absolute, prefix ++ "    ", count) : ();
+          if (isDirectory) {
+            tree(absolute, prefix ++ "    ", count);
+          };
         } else {
           print_endline(prefix ++ "├── " ++ path);
-          isDirectory ? tree(absolute, prefix ++ "│   ", count) : ();
+          if (isDirectory) {
+            tree(absolute, prefix ++ "│   ", count);
+          };
         };
       },
     paths,
