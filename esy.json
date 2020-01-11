@@ -15,7 +15,7 @@
     "prettier": "bash -c 'prettier --write **/*.{json,md,yml}'"
   },
   "dependencies": {
-    "@opam/dune": "2.1.1",
+    "@opam/dune": "2.1.2",
     "ocaml": "4.08.1000",
     "refmterr": "3.3.0"
   },
