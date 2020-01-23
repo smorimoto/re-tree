@@ -1,5 +1,5 @@
 {
-  "checksum": "43b14186076c296602bc6706f45808a4",
+  "checksum": "2458f7e476022b02cfcb702539ab6e5f",
   "root": "tree@link-dev:./esy.json",
   "node": {
     "tree@link-dev:./esy.json": {
@@ -10,7 +10,7 @@
       "overrides": [],
       "dependencies": [
         "refmterr@3.3.0@d41d8cd9", "ocaml@4.8.1000@d41d8cd9",
-        "@opam/dune@opam:2.1.3@8a848ab8"
+        "@opam/reason@opam:3.5.2@f689c2cb", "@opam/dune@opam:2.1.3@8a848ab8"
       ],
       "devDependencies": [
         "prettier@1.19.1@d41d8cd9", "@opam/merlin@opam:3.3.3@d653b06a"
@@ -168,6 +168,39 @@
       ],
       "devDependencies": [
         "ocaml@4.8.1000@d41d8cd9", "@opam/dune@opam:2.1.3@8a848ab8"
+      ]
+    },
+    "@opam/reason@opam:3.5.2@f689c2cb": {
+      "id": "@opam/reason@opam:3.5.2@f689c2cb",
+      "name": "@opam/reason",
+      "version": "opam:3.5.2",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/md5/66/66c54296009e0f6cbc8e93aa01105cbb#md5:66c54296009e0f6cbc8e93aa01105cbb",
+          "archive:https://registry.npmjs.org/@esy-ocaml/reason/-/reason-3.5.2.tgz#md5:66c54296009e0f6cbc8e93aa01105cbb"
+        ],
+        "opam": {
+          "name": "reason",
+          "version": "3.5.2",
+          "path": "esy.lock/opam/reason.3.5.2"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.8.1000@d41d8cd9", "@opam/result@opam:1.4@dc720aef",
+        "@opam/ocamlfind@opam:1.8.1@ff07b0f9",
+        "@opam/ocaml-migrate-parsetree@opam:1.5.0@3e319dbc",
+        "@opam/merlin-extend@opam:0.5@a5dd7d4b",
+        "@opam/menhir@opam:20190924@004407ff",
+        "@opam/dune@opam:2.1.3@8a848ab8", "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.8.1000@d41d8cd9", "@opam/result@opam:1.4@dc720aef",
+        "@opam/ocaml-migrate-parsetree@opam:1.5.0@3e319dbc",
+        "@opam/merlin-extend@opam:0.5@a5dd7d4b",
+        "@opam/menhir@opam:20190924@004407ff",
+        "@opam/dune@opam:2.1.3@8a848ab8"
       ]
     },
     "@opam/re@opam:1.9.0@d4d5e13d": {
