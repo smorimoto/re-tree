@@ -15,8 +15,8 @@
     "prettier": "bash -c 'prettier --write **/*.{json,md,yml}'"
   },
   "dependencies": {
-    "@opam/dune": "2.2.0",
-    "@opam/reason": "3.5.2",
+    "@opam/dune": "2.4.0",
+    "@opam/reason": "3.6.0",
     "ocaml": "4.9.0",
     "refmterr": "3.3.0"
   },
@@ -25,6 +25,6 @@
     "prettier": "1.19.1"
   },
   "resolutions": {
-    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#5e864ab"
+    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#62f5c11"
   }
 }
