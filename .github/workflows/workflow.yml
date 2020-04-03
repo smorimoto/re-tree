@@ -10,10 +10,12 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-
-    env:
-      node-version: 13.x
+        os:
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+        node-version:
+          - 13.x
 
     runs-on: ${{ matrix.os }}
 
@@ -21,18 +23,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2.1.0
 
-      - name: Use Node.js ${{ env.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1.4.0
         with:
-          node-version: ${{ env.node-version }}
+          node-version: ${{ matrix.node-version }}
 
       - name: Restore esy cache
         uses: actions/cache@v1.1.2
         id: esy
         with:
           path: ~/.esy
-          # prettier-ignore
-          key: ${{ runner.os }}-esy-${{ hashFiles(format('{0}{1}', github.workspace, '/esy.lock/index.json')) }}
+          key: ${{ runner.os }}-esy-${{ hashFiles('esy.lock/index.json') }}
           restore-keys: |
             ${{ runner.os }}-esy-
 
