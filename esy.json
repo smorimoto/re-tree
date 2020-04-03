@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "dune clean --for-release-of-packages=#{self.name}",
     "fmt": "esy dune build @fmt --auto-promote",
-    "prettier": "bash -c 'prettier --write **/*.{json,md,yml}'"
+    "prettier": "bash -c 'prettier --write .'"
   },
   "dependencies": {
     "@opam/dune": "2.4.0",
@@ -21,10 +21,7 @@
     "refmterr": "3.3.0"
   },
   "devDependencies": {
-    "@opam/ocaml-lsp-server": "*",
-    "prettier": "1.19.1"
-  },
-  "resolutions": {
-    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#62f5c11"
+    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam",
+    "prettier": "2.0.2"
   }
 }
