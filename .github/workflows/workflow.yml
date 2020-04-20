@@ -21,15 +21,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2.1.0
+        uses: actions/checkout@v2
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1.4.0
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Restore esy cache
-        uses: actions/cache@v1.1.2
+        uses: actions/cache@v1
         id: esy
         with:
           path: ~/.esy
@@ -47,7 +47,7 @@ jobs:
         run: cp _build/default/src/tree.exe ./tree
 
       - name: Upload binary to artifact
-        uses: actions/upload-artifact@v1.0.0
+        uses: actions/upload-artifact@v1
         with:
           name: re-tree-${{ matrix.os }}
           path: tree
