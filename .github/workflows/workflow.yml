@@ -47,7 +47,7 @@ jobs:
         run: cp _build/default/src/tree.exe ./tree
 
       - name: Upload binary to artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: re-tree-${{ matrix.os }}
           path: tree
