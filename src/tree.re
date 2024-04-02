@@ -18,12 +18,12 @@ let rec tree = (directory, prefix, count) => {
           count.files := count.files^ + 1;
         };
         if (index == Array.length(paths) - 1) {
-          print_endline(prefix ++ "└── " ++ path);
+          Printf.printf("%s└── %s\n", prefix, path);
           if (isDirectory) {
             tree(absolute, prefix ++ "    ", count);
           };
         } else {
-          print_endline(prefix ++ "├── " ++ path);
+          Printf.printf("%s├── %s\n", prefix, path);
           if (isDirectory) {
             tree(absolute, prefix ++ "│   ", count);
           };
@@ -35,11 +35,5 @@ let rec tree = (directory, prefix, count) => {
 
 let () = {
   tree(Sys.getcwd(), "", count);
-  print_endline(
-    "\n"
-    ++ string_of_int(count.dirs^)
-    ++ " directories, "
-    ++ string_of_int(count.files^)
-    ++ " files",
-  );
+  Printf.printf("\n%d directories, %d files\n", count.dirs^, count.files^);
 };

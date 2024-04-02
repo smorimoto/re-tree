@@ -1,5 +1,3 @@
 (executable
  (name tree)
- (public_name tree)
- (modes
-  (native exe)))
+ (public_name tree))

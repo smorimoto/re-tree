@@ -1,53 +1,44 @@
-name: Main workflow
+name: Builds, tests & co
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
+  - push
+  - pull_request
+
+permissions: read-all
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
-        node-version:
-          - 13.x
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout tree
+        uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set-up OCaml
+        uses: ocaml/setup-ocaml@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          ocaml-compiler: "5.1"
+          allow-prerelease-opam: true
+          dune-cache: true
 
-      - name: Restore esy cache
-        uses: actions/cache@v2
-        id: esy
+      - run: opam install . --deps-only
+
+      - run: opam exec -- dune build @all
+
+      - run: opam exec -- dune exec tree
+
+  lint-opam:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout tree
+        uses: actions/checkout@v4
+
+      - name: Set-up OCaml
+        uses: ocaml/setup-ocaml@v2
         with:
-          path: ~/.esy
-          key: ${{ runner.os }}-esy-${{ hashFiles('esy.lock/index.json') }}
-          restore-keys: |
-            ${{ runner.os }}-esy-
+          ocaml-compiler: "5.1"
+          allow-prerelease-opam: true
+          dune-cache: true
 
-      - name: Install esy
-        run: npm install --global esy
-
-      - name: Install and build opam packages
-        run: esy
-
-      - name: Copy and rename binary
-        run: cp _build/default/src/tree.exe ./tree
-
-      - name: Upload binary to artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: re-tree-${{ matrix.os }}
-          path: tree
+      - uses: ocaml/setup-ocaml/lint-opam@v2

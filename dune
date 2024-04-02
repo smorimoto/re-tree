@@ -1,2 +1,0 @@
-(dirs
- (:standard \ _build _esy node_modules))
