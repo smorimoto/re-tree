@@ -1,4 +1,4 @@
-(lang dune 3.14)
+(lang dune 3.16)
 
 (name re-tree)
 
@@ -20,5 +20,6 @@
  (description
   "A minimal Unix tree command implementation written in pure Native Reason.")
  (depends
+  ocaml
   reason
   (ocaml-lsp-server :with-dev-setup)))
