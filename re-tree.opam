@@ -10,8 +10,7 @@ license: "ISC"
 homepage: "https://github.com/smorimoto/re-tree"
 bug-reports: "https://github.com/smorimoto/re-tree/issues"
 depends: [
-  "dune" {>= "3.16"}
-  "ocaml"
+  "dune" {>= "3.17"}
   "reason"
   "ocaml-lsp-server" {with-dev-setup}
   "odoc" {with-doc}
