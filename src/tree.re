@@ -3,7 +3,10 @@ type t = {
   files: ref(int),
 };
 
-let count = {dirs: ref(0), files: ref(0)};
+let count = {
+  dirs: ref(0),
+  files: ref(0),
+};
 
 let rec tree = (directory, prefix, count) => {
   let paths = Sys.readdir(directory);
